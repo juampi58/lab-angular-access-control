@@ -1,0 +1,34 @@
+deriuqer dseriuqer 
+<div class="container">
+<form class="form-signin"(ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+<h2 class="form-signin-heading">Please Log</h2>
+ <label for="inputPerson" class="sr-only">Person</label>
+
+    <input type="text" name="person" [(ngModel)]="person"
+          #myPerson="ngModel" minlength="2" id="inputPerson" class="form-control" placeholder="Your Name" autofocus required/>
+
+
+  <label for="inputMessage" class="sr-only">Message</label>
+
+    <input type="text" name="message" [(ngModel)]="message"
+          #myMessage="ngModel" minlength="5" id="inputMessage" class="form-control" placeholder="Message" required/>
+
+
+  <button type="submit" [disabled]="!myForm.form.valid"class="btn btn-lg btn-primary btn-block"> Log it </button><br>
+  <div *ngIf="display">
+    <p class="alert alert-success" role="alert" > Success </p>
+    </div>
+    <div *ngIf="myPerson.errors && (myPerson.dirty || myPerson.touched)">
+      <p class="alert alert-danger" role="alert" [hidden]="!myPerson.errors.minlength">
+        Person must be at least 2 characters long.
+      </p>
+    </div>
+    <div *ngIf="myMessage.errors && (myMessage.dirty || myMessage.touched)">
+      <p class="alert alert-danger" role="alert" [hidden]="!myMessage.errors.minlength">
+        Message is required, at least 5 characters.
+      </p>
+    </div>
+</form>
+
+
+   </div> <!-- /container -->
